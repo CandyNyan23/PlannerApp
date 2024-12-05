@@ -18,7 +18,6 @@ class LoginActivityViewModel : ViewModel() {
     fun getIsLoginSuccessLiveData() : LiveData<Boolean> = isLoginSuccessLiveData
 
     fun isValidPassword(password: String?): Boolean {
-
         val pattern: Pattern
         val PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$"
 
