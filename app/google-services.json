@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "100163477507",
+    "project_id": "plannerapp-af412",
+    "storage_bucket": "plannerapp-af412.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100163477507:android:d958ec3df58204effa6e36",
+        "android_client_info": {
+          "package_name": "com.example.kotlinplannerapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNS2lGwpWgDXqhEp3Z_otEdnM-qcuHQmk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
