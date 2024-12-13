@@ -15,31 +15,26 @@ class SignUpActivityViewModel : ViewModel() {
     private val isSignUpSuccessLiveData : MutableLiveData<Boolean> = MutableLiveData()
     private var auth: FirebaseAuth = Firebase.auth
 
+    companion object {
+        private const val PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$"
+    }
+
     fun getIsSignUpSuccessLiveData() : LiveData<Boolean> = isSignUpSuccessLiveData
 
-    fun isValidPassword(password: String?): Boolean {
-        val pattern: Pattern
-        val PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$"
-
-        pattern = Pattern.compile(PASSWORD_PATTERN)
-        val matcher: Matcher = pattern.matcher(password.toString())
-
+     private fun isValidPassword(password: String): Boolean {
+        val pattern: Pattern = Pattern.compile(Companion.PASSWORD_PATTERN)
+        val matcher: Matcher = pattern.matcher(password)
         return matcher.matches()
     }
 
-    fun isSamePassword(password1 : String, password2: String) : Boolean {
-        if (isValidPassword(password1) && isValidPassword(password2)) {
-            if (password1 == password2) {
-                return true
-            } else {
-                return false
-            }
-        }
-        return false
+    private fun arePasswordsTheSame(password1 : String, password2: String) : Boolean {
+        val arePasswordsTheSame = password1 == password2
+        val arePasswordsValid = isValidPassword(password1) && isValidPassword(password2)
+        return arePasswordsTheSame.takeIf { arePasswordsValid } ?: false
     }
 
     fun signUp(email : String, password1 : String,password2 : String) {
-        if (Patterns.EMAIL_ADDRESS.matcher(email).matches() && isSamePassword(password1, password2)) {
+        if (Patterns.EMAIL_ADDRESS.matcher(email).matches() && arePasswordsTheSame(password1, password2)) {
             auth.createUserWithEmailAndPassword(email, password1).addOnCompleteListener {
                 isSignUpSuccessLiveData.postValue(it.isSuccessful)
             }
@@ -47,5 +42,4 @@ class SignUpActivityViewModel : ViewModel() {
             isSignUpSuccessLiveData.postValue(false)
         }
     }
-
 }

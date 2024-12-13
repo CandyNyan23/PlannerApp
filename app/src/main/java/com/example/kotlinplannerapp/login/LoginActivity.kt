@@ -18,8 +18,8 @@ import com.example.kotlinplannerapp.home.HomeActivity
 class LoginActivity : AppCompatActivity() {
 
     private var loginButton: Button? = null
-    private var email: EditText? = null
-    private var password: EditText? = null
+    private var emailEditText: EditText? = null
+    private var passwordEditText: EditText? = null
 
     private val loginObserver: Observer<Boolean> = Observer { isLoginSuccessful ->
         if (isLoginSuccessful) {
@@ -27,7 +27,7 @@ class LoginActivity : AppCompatActivity() {
         } else {
             Toast.makeText(
                 this,
-                "Enter valid email address and/or password.",
+                R.string.wrong_email_or_password,
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -50,12 +50,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun onLoginButtonClick(view: View) {
-        loginActivityViewModel.login(email?.text.toString(), password?.text.toString())
+        loginActivityViewModel.login(emailEditText?.text.toString(), passwordEditText?.text.toString())
     }
 
     private fun bindViews() {
-        email = findViewById(R.id.email)
-        password = findViewById(R.id.password)
+        emailEditText = findViewById(R.id.email)
+        passwordEditText = findViewById(R.id.password)
         loginButton = findViewById(R.id.button_login)
     }
 

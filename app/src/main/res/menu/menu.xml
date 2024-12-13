@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/baseline_home_24"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/nav_calendar"
+            android:icon="@drawable/baseline_calendar_month_24"
+            android:title="@string/calendar" />
+        <item
+            android:id="@+id/nav_notes"
+            android:icon="@drawable/baseline_sticky_note_2_24"
+            android:title="@string/notes" />
+        <item
+            android:id="@+id/nav_mood"
+            android:icon="@drawable/baseline_mood_24"
+            android:title="@string/mood_tracker" />
+        <item
+            android:id="@+id/nav_toDo"
+            android:icon="@drawable/baseline_checklist_24"
+            android:title="@string/to_do_list" />
+    </group>
+
+    <group
+        android:id="@+id/third_section"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/baseline_settings_24"
+            android:title="@string/settings" />
+    </group>
+
+</menu>
